@@ -34,6 +34,10 @@ def charge():
 
 	return render_template("charge.html",amount=amnt)
 
+@application.route("/organizer_signup")
+def organizer_signup():
+	return render_template("organizerSignup.html")
+
 
 if __name__ == '__main__':
 	application.run(debug=True)
