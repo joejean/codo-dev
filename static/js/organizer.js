@@ -23,9 +23,9 @@ function Organizer(){
 			data: ko.toJSON({
 				type: self.type,
 				first_name:self.firstName, 
-				lat_name: self.lastName, 
+				last_name: self.lastName, 
 				dob:self.dob, 
-				ssn_last_4: self.ssn, 
+				ssn: self.ssn, 
 				country: self.country, 
 				city: self.city, 
 				state: self.state,

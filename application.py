@@ -38,18 +38,30 @@ def charge():
 @application.route("/organizer_signup", methods=['GET','POST'])
 def organizer_signup():
 	if request.method == 'POST':
-		print type(request.form)
-		data = dict(request.form)
+		data = request.get_json()
+		dobList = data['dob'].split('-')
 		#TODO: add all the parameters that stripe is expecting to create the account
 		print stripe.Account.create(
 			managed=True,
-			country = data.get('country'),
-			first_name = data.get('first_name'), 
-		    last_name = data.get('last_name'), 
-		    dob = data.get('dob'),
-		    type = data.get('type'),
-		    sss_last_4 = data.get('ssn'), 
-		   
+			country = data['country'],
+			# first_name = data['first_name'], 
+		 #    last_name = data['last_name'], 
+		    # dob = {
+		    #   "day": dobList[2],
+		    #   "month":dobList[1],
+		    #   "year": dobList[0]
+		    # },
+		    legal_entity = {
+		    	"type":data['type'],
+		    	"address" : {
+		    		"line1": data['street'],
+		    		"city":data['city'],
+		    		"state":data['state'],
+		    		"country":data['country'],
+		    	}
+		    },
+		    
+		    #ssn_last_4 = data['ssn'] 
 			)
 
 	return render_template("organizerSignup.html")
