@@ -41,7 +41,7 @@ def organizer_signup():
 		data = request.get_json()
 		dobList = data['dob'].split('-')
 		#TODO: add all the parameters that stripe is expecting to create the account
-		print stripe.Account.create(
+		stripe.Account.create(
 			managed=True,
 			country = data['country'],
 			# first_name = data['first_name'], 
