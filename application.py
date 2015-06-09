@@ -1,6 +1,7 @@
 import os
 import stripe
 from flask import Flask, render_template, request
+from datetime import date
 
 
 stripe_keys = {
@@ -34,8 +35,23 @@ def charge():
 
 	return render_template("charge.html",amount=amnt)
 
-@application.route("/organizer_signup")
+@application.route("/organizer_signup", methods=['GET','POST'])
 def organizer_signup():
+	if request.method == 'POST':
+		print type(request.form)
+		data = dict(request.form)
+		#TODO: add all the parameters that stripe is expecting to create the account
+		print stripe.Account.create(
+			managed=True,
+			country = data.get('country'),
+			first_name = data.get('first_name'), 
+		    last_name = data.get('last_name'), 
+		    dob = data.get('dob'),
+		    type = data.get('type'),
+		    sss_last_4 = data.get('ssn'), 
+		   
+			)
+
 	return render_template("organizerSignup.html")
 
 

@@ -1,43 +1,50 @@
 {%extends "base.html"%}
 {% block content%}
 
-
+<div class="container">
+	
 <form class="form">
 	<div class="form-group">
 	<label>First Name: </label>
-	<input class="form-control" type="text" placeholder="First Name">
+	<input data-bind="value: firstName" class="form-control" type="text" placeholder="First Name">
 	</div>
 
 	<div class="form-group">
 	<label>Last Name: </label>
-	<input class="form-control" type="text" placeholder="Last Name">
+	<input data-bind="value: lastName" class="form-control" type="text" placeholder="Last Name">
 	</div>
 
 	<div class="form-group">
 	<label>DOB: </label>
-	<input class="form-control" type="text" placeholder="DOB">
+	<input data-bind="value: dob" class="form-control" type="text" placeholder="DOB">
 	</div>
 
 	<div class="form-group">
 	<label>SSN (last 4 digits): </label>
-	<input class="form-control" type="text" placeholder="SSN">
+	<input data-bind="value: ssn" class="form-control" type="text" placeholder="SSN">
 	</div>
 
 	<div class="form-group">
 	<label>Country: </label>
-	<input class="form-control" type="text" placeholder="Country">
+	<input data-bind="value: country" class="form-control" type="text" placeholder="Country">
 	</div>
 
 	<div class="form-group">
 	<label>City: </label>
-	<input class="form-control" type="text" placeholder="City">
+	<input data-bind="value: city" class="form-control" type="text" placeholder="City">
 	<label>Street: </label>
-	<input class="form-control" type="text" placeholder="Street">
+	<input data-bind="value: street" class="form-control" type="text" placeholder="Street">
 	<label>Zip Code: </label>
-	<input class="form-control" type="text" placeholder="Zip Code">
+	<input data-bind="value: zipCode" class="form-control" type="text" placeholder="Zip Code">
 	</div>
 
-	<button class="btn btn-default">Submit</button>
+	<button data-bind="click: save" class="btn btn-default">Submit</button>
 
 </form>
+
+</div>
 {%endblock%}
+
+{%block footer%}
+<script src={{url_for("static", filename="js/organizer.js")}}></script>
+{% endblock %}
